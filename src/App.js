@@ -1,19 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import HookThis from './HookThis'
 
 function App() {
+  const [userText, setUserText] = useState('')
 
-  const [number, setNumber] = useState(10)
- 
-  const increase = () => setNumber(number + 1)
-  const decrease = () => setNumber(number - 1)
-  const setItOff = () => setNumber(0)
+  function handleUserKeyPress(event){
+    console.log(event)
+    let {key, keyCode} = event
+    if (keyCode = 32 || (keyCode >= 65 && key <= 90)){
+      setUserText(`${userText}${key}`)
+    }
+  }
+
+  useEffect(()=>{
+    window.addEventListener("keydown", handleUserKeyPress)
+    return ()=>{
+      window.removeEventListener("keydown", handleUserKeyPress)
+    }
+  }, [userText])
 
   return (
     <div className="container">
-      <button className="button is-dark" onClick={increase} >Increase</button>
-      <button className="button is-dark" onClick={decrease} >Decrease</button>
-      <button className="button is-dark" onClick={setItOff} >Set it off</button>
-      <p>{number}</p>
+      <HookThis/>
+      <h1>Type !</h1>
+      <h1>
+        {userText}
+      </h1>
     </div>
   );
 }
