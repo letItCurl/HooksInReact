@@ -1,33 +1,55 @@
-import React, {useState, useEffect} from 'react';
-import HookThis from './HookThis'
+import React, {useState, useEffect, createContext} from 'react';
 
-function App() {
-  const [userText, setUserText] = useState('')
+const NameContext = createContext()
 
-  function handleUserKeyPress(event){
-    console.log(event)
-    let {key, keyCode} = event
-    if (keyCode = 32 || (keyCode >= 65 && key <= 90)){
-      setUserText(`${userText}${key}`)
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: 'billy'
     }
   }
 
-  useEffect(()=>{
-    window.addEventListener("keydown", handleUserKeyPress)
-    return ()=>{
-      window.removeEventListener("keydown", handleUserKeyPress)
-    }
-  }, [userText])
-
-  return (
-    <div className="container">
-      <HookThis/>
-      <h1>Type !</h1>
-      <h1>
-        {userText}
-      </h1>
-    </div>
-  );
+  render(){
+    return(
+      <NameContext.Provider value={this.state.name}>
+        <Child/>
+      </NameContext.Provider>
+    )
+  }
 }
+
+class Child extends React.Component {
+  render(){
+    return(
+      <section className="child">
+        <Grandchild/>
+      </section>
+    )
+  }
+}
+
+class Grandchild extends React.Component {
+  render(){
+    return(
+      <section className="grandChild">
+        <Button/>
+      </section>
+    )
+  }
+}
+class Button extends React.Component {
+  render(){
+    return(
+      <NameContext.Consumer className="grandChild">
+        {
+          name => <button>{name}</button>
+        }
+      </NameContext.Consumer>
+    )
+  }
+}
+
+ 
 
 export default App;
