@@ -1,11 +1,6 @@
 # Hook practice
 > React's Hooks 🖇
 
-Hooks is the best of classes and stateless components.
-Combined with a centralized store as redux, we can refractor the components that only read the store.
-
-It allow the breakdown components in smaller components withou falling in a context hell.
-
 # About me
 
 <table style="border: none;">
@@ -18,7 +13,7 @@ It allow the breakdown components in smaller components withou falling in a cont
     <td>
       <div style="margin-left: 30px;">
         <p>Hey there !!</br>
-        I'm letItCurl, fullstack developer engineer in freelance a.k.a Roland in real life :p</br>
+        I'm letItCurl, fullstack developer engineer in freelance </br>
         If you have any question you can <a href="https://www.linkedin.com/in/roland-lopez-developer/?locale=en_US">contact me</a> if you wish !</p>
         <p>I'm always ready to help !</p>
         <a href="mailto:rolandlopez.developer@gmail.com?subject=Hey!4reUava1labl3?">Email me !</a>
